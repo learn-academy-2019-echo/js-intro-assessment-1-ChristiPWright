@@ -66,7 +66,10 @@ const lengthCompare = (var1, var2) => {
 }
 
 console.log(lengthCompare(myDog, myCat))
-
+//with terenary
+// const lengthCompare = (var1, var2) => {
+//      return var1.length >var2.length ? var1 : var2
+//}
 // // 2b. Create a function that takes in two arguments and returns an array containing the two variables. Expected output: ["Snoopy", "Garfield"]
 function stringsToArray(arg1, arg2) {
     let newArray = []
@@ -76,7 +79,16 @@ function stringsToArray(arg1, arg2) {
 }
 
 console.log(stringsToArray(myCat, myDog))
-
+// different way via class discussion
+// function arrayifier(...args){
+//     return args
+// }
+// console.log(arrayifier(myDog, myCat))
+//or
+// function arrayifier(var1, var2) {
+//     return [var1, var2]
+// }
+// console.log(arrayifier(myCat, myDog))
 // // 2c. STRETCH: Write a function that returns the two variables in all lowercase letters. Expected output: "snoopy garfield"
 const lowerNow = (var1,var2) => {
     var1 = var1.toLocaleLowerCase()
@@ -84,7 +96,10 @@ const lowerNow = (var1,var2) => {
     return `${var1} ${var2}`
 }
 console.log(lowerNow(myCat,myDog))
-
+// alt via class
+// const lowerCaseifer = (var1, var2) {
+//     return [var1, var2].join(" ").toLowerCase()
+// }
 
 // // ------------------------------ Consider the following variable:
 
@@ -97,6 +112,8 @@ const loopLog = (string) => {
 }
 console.log(loopLog(myMessage))
 // // i think this is logging 1 extra place returning undefined... why?
+// or use console.log(string.charAt(i)) w/in the for {}
+
 
 // 3b. Write the code that logs each letter of the message using map.
 //I'm not sure what the output you are looking for but here is return using .map
@@ -107,6 +124,14 @@ function stringMap (string) {
 }
 
 console.log(stringMap(myMessage))
+
+// in-class alt - example of altering map inside function
+// newMssg = myMessage.split("")
+// newMssg.map((letter) => {
+//     console.log(letter)
+// })
+// or line 130-132 replaced w/ newMssg.map( letter => console.log(letter))
+
 
 // 3c. STRETCH: Write the code that logs each letter of the message using a while loop.
 
@@ -119,10 +144,23 @@ const whileFunc = (string) => {
 }
 console.log(whileFunc(myMessage))
 
+//inclass alt
+var i = 0;
+while(myMessage.length > i){
+    i++
+    console.log(meMessage[i])
+}
+//or
+myArr = myMessage.split("")
+while(myArr.length >= 0){
+    console.log(myArr[0])
+    myArr.shift()
+}
+
 // 3d. SUPER STRETCH: Write the code that logs each letter of the message using forEach().
-
-
-
+myMessage.split("".forEach((letter)=>{
+    console.log(letter)
+}))
 
 // ---------------------------- Consider the following variable:
 
@@ -137,6 +175,16 @@ const noVowels = (string) => {
     return noVowelArr.join("")
 }
 console.log(noVowels(testString))
+//172-176 return string.filter((letter) => {
+//     letter != vowel statement
+// })
+//arvins vowel string way; define const vowels then call useing if != vowels.includes(letter)
+const deVowelifer = (string) => {
+    const vowels = ['a', "e"]
+    const arr = string.split("").filter((letter) =>{
+        return !vowels.inculdes(letter)
+    })
+    console.log(deVowelifer(testString))
 
 //if for loop - currently returning w/ vowels... why? 
 // const newVowels2 = (string) => {
@@ -161,7 +209,8 @@ console.log(noVowels(testString))
 
 
 // 4b. STRETCH: Update your function to return an error message if the variable is not a string. Copy and paste your function to add these changes.
-
+//if(typeOf(!== "String")){
+  //  throw(new Error("You have an error"))}
 
 
 
@@ -211,6 +260,7 @@ const catsNames2 = (array) => {
 
 console.log(catsNames2(toonimals))
 
+//
 
 
 //5c. STRETCH: Create a function that will print a sentence for every toon stating their name and their animal type. Use string interpolation. Expected output: "Itchy is a mouse" "Stimpy is a cat" "Daffy is a duck" "Scratchy is a cat" "Ren is a dog" "Felix is a cat"
@@ -218,4 +268,12 @@ const eachToon = (array) => {
 array1.forEach(function(element) {
   return `${array.name} is a ${animal}`;
 }
+}
 console.log(eachToon(toonimals))
+
+// inclass
+const describer = (list) => {
+    list.forEach((toonimals) => {
+        console.log(`${toonimals.name` is a ${toonimals.type}.`)
+    })
+}
